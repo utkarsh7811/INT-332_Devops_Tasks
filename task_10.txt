@@ -1,0 +1,10 @@
+docker exec -it Container ID ls /
+docker exec -it Container ID /bin/bash
+mkdir /data
+echo "Hello Docker" > /data/test.txt
+exit
+docker attach Container ID 
+docker cp Container ID :/data/test.txt C:\Users\HP\Desktop\
+docker cp C:\Users\HP\Desktop\test.txt Container ID :/data/sample.txt
+docker exec -it Container ID ls /data
+docker exec -it Container ID cat /data/sample.txt

@@ -1,0 +1,39 @@
+PS C:\Users\utkarsh> docker volume create ourvolume 
+ourvolume
+PS C:\Users\utkarsh> docker volume ls
+DRIVER    VOLUME NAME
+local     d27bd51844ef1baa29347d212a4215ab2c53d98d55cb3ff4c60330cf7e1edc7f
+local     f64a6da7fa6aa4e7a780e6e3315dcf025d5a8edb8461e9428476bda413a73ccf
+local     ourvolume
+    {
+        "CreatedAt": "2026-02-18T07:13:40Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/ourvolume/_data",
+        "Name": "ourvolume",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+PS C:\Users\utkarsh> docker run -d -v ourvolume:^C
+PS C:\Users\utkarsh> docker run -d -v ourvolume:"C:\Users\utkarsh\OneDrive\Desktop\" -- name naughty_borg httpd
+Unable to find image 'name:latest' locally
+docker: Error response from daemon: pull access denied for name, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+PS C:\Users\utkarsh> docker run -d -v ourvolume:"C:\Users\utkarsh\OneDrive\Desktop\" -- name naughty_borg ubuntu
+Unable to find image 'name:latest' locally
+docker: Error response from daemon: pull access denied for name, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+PS C:\Users\utkarsh> docker run -d -v ourvolume:"C:\Users\utkarsh\OneDrive\Desktop\" -- name naughty_borg ubuntu
+Unable to find image 'name:latest' locally
+docker: Error response from daemon: pull access denied for name, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+PS C:\Users\utkarsh> docker run -d -v ourvolume:"C:\Users\utkarsh\OneDrive\Desktop\" -- name naughty_borg ubuntu
+Unable to find image 'name:latest' locally
+docker: Error response from daemon: pull access denied for name, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+PS C:\Users\utkarsh>

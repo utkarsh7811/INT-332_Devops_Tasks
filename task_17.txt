@@ -1,0 +1,9 @@
+Task 17 – Create and Manage Files Inside Container
+docker exec -it 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224 mkdir /project
+docker exec -it 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224 bash -c "echo 'Docker Lab Assignment' > /project/report.txt"
+docker exec -it 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224 bash -c "echo 'Container File Creation Test' >> /project/report.txt"
+docker exec -it 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224 cat /project/report.txt
+docker cp 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224:/project/report.txt C:\Users\HP\Desktop\
+docker exec -it 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224 bash -c "echo 'This is an additional file inside the same container.' > /project/notes.txt"
+docker exec -it 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224 ls /project
+docker exec -it 63de1b6c3391d6a4687e00e375ca9cfe4685e959c2b774deb8f99b87beaf3224 cat /project/notes.txt

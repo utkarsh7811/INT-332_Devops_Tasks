@@ -1,0 +1,13 @@
+docker volume create projectdata
+docker volume ls
+docker volume inspect projectdata
+docker run -dit --name project_container -v projectdata:/app/data ubuntu bash
+docker exec -it project_container ls /app/data
+docker exec -it project_container bash
+echo "This is my first container" > /app/data/report.txt
+docker exec -it project_container cat /app/data/report.txt
+docker inspect project_container
+docker rm -f project_container
+docker run -dit --name project_container_new -v projectdata:/app/data ubuntu bash
+docker exec -it project_container_new ls /app/data
+docker exec -it project_container_new cat /app/data/report.txt

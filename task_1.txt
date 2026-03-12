@@ -1,0 +1,28 @@
+# Docker Basic Commands
+
+```bash
+docker pull ubuntu
+docker images
+docker run ubuntu
+docker run -it ubuntu /bin/bash
+docker stop <container_id>
+docker rm <container_id>
+docker rmi ubuntu
+docker system prune -a
+docker system prune -a --volumes
+```
+
+### Description
+
+* **docker pull ubuntu** → Downloads the Ubuntu image from Docker Hub
+* **docker images** → Lists all downloaded images
+* **docker run ubuntu** → Creates and runs a container from the Ubuntu image
+* **docker run -it ubuntu /bin/bash** → Runs Ubuntu with terminal access
+* **docker stop <container_id>** → Stops a running container
+* **docker rm <container_id>** → Removes a container
+* **docker rmi ubuntu** → Deletes the Ubuntu image
+* **docker system prune -a** → Cleans unused containers, images, and networks
+* **docker system prune -a --volumes** → Removes all unused containers, images, networks, and volumes
+
+```
+```

@@ -1,0 +1,9 @@
+mkdir /project
+
+echo "Hello Docker" > /project/report.txt
+
+exit
+docker cp dbcb6a49f493:/project/report.txt "C:\Users\utkarsh\OneDrive\Desktop\"
+docker cp "C:\Users\utkarsh\OneDrive\Desktop\coco.txt" dbcb6a49f493:/project/sample.txt
+docker exec -it dbcb6a49f493 ls /project
+docker exec -it dbcb6a49f493 cat /project/sample.txt

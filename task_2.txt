@@ -1,0 +1,136 @@
+# Docker Practical Tasks
+
+## Task 1 – Check Docker Version
+
+```bash
+docker --version
+```
+
+---
+
+## Task 2 – Get Docker System Information
+
+```bash
+docker info
+```
+
+---
+
+## Task 3 – Check Docker Image History
+
+```bash
+docker history httpd
+```
+
+---
+
+## Task 4 – Download Docker Image from Docker Hub
+
+```bash
+docker pull httpd
+```
+
+---
+
+## Task 5 – List Docker Images
+
+```bash
+docker images
+```
+
+---
+
+## Task 6 – Run Docker Container
+
+```bash
+docker run httpd
+```
+
+---
+
+## Task 7 – Run Container in Interactive Mode
+
+```bash
+docker run -it ubuntu /bin/bash
+```
+
+---
+
+## Task 8 – Run Container in Background
+
+```bash
+docker run -d httpd
+```
+
+---
+
+## Task 9 – Run Container with Name
+
+```bash
+docker run -d --name mycontainer httpd
+```
+
+---
+
+## Task 10 – Port Mapping
+
+```bash
+docker run -d -p 8080:80 --name webserver httpd
+```
+
+---
+
+## Task 11 – List Running Containers
+
+```bash
+docker ps
+```
+
+---
+
+## Task 12 – List All Containers
+
+```bash
+docker ps -a
+```
+
+---
+
+## Task 13 – Stop Container
+
+```bash
+docker stop <container_id>
+```
+
+---
+
+## Task 14 – Remove Container
+
+```bash
+docker rm <container_id>
+```
+
+---
+
+## Task 15 – Remove Docker Image
+
+```bash
+docker rmi httpd
+```
+
+---
+
+## Task 16 – Clean Unused Docker Resources
+
+```bash
+docker system prune -a
+```
+
+---
+
+## Task 17 – Clean Everything Including Volumes
+
+```bash
+docker system prune -a --volumes
+```
+

@@ -1,0 +1,10 @@
+Task 16 – Docker Container Lifecycle Management
+docker run -d -p 80:80 --name my_container nginx
+docker start <container_id_or_name>
+docker stop <container_id_or_name>
+docker restart <container_id_or_name>
+docker pause <container_id_or_name>
+docker unpause <container_id_or_name>
+docker kill <container_id_or_name>
+docker rm <container_id_or_name>
+docker container prune

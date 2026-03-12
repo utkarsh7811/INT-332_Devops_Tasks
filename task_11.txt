@@ -1,0 +1,9 @@
+docker volume create mydata
+docker volume ls
+docker volume inspect mydata
+docker run -dit --name mycontainer -v mydata:/app/data ubuntu
+docker exec -it mycontainer ls /app/data
+docker inspect mycontainer
+docker rm -f mycontainer
+docker volume rm mydata
+docker volume prune

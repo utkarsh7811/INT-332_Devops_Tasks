@@ -1,0 +1,12 @@
+Task G – Docker Volume Data Persistence
+docker volume create projectdata
+docker volume ls
+docker volume inspect projectdata
+docker run -dit --name project_container -v projectdata:/app/data ubuntu
+docker exec -it project_container bash -c "echo This is my first volume > /app/data/report.txt"
+docker exec -it project_container cat /app/data/report.txt
+docker stop project_container
+docker rm project_container
+docker run -dit --name project_container_new -v projectdata:/app/data ubuntu
+docker exec -it project_container_new ls /app/data
+docker exec -it project_container_new cat /app/data/report.txt

@@ -1,0 +1,9 @@
+Task 15 – Run Container with Environment Variable and Volume
+docker pull ubuntu
+mkdir C:\app\data
+docker run -it --name my_app -e APP_ENV=production -v C:\app\data:/data ubuntu /bin/bash
+echo "Hello this is my first program" > /data/test.txt
+cat /data/test.txt
+echo "Second line added" >> /data/test.txt
+cat /data/test.txt
+exit

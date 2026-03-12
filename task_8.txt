@@ -1,0 +1,25 @@
+docker volume create mydata
+
+docker volume ls -- verify that volume has created. 
+
+docker volume inspect mydata
+
+docker run -dit --name mycontainer -v mydata:/app/data ubuntu bash
+
+docker exec -it mycontainer ls /app/data
+
+docker exec -it mycontainer bash
+
+echo "Volume Data Saved" > /app/data/file.txt
+
+exit
+
+docker exec -it mycontainer cat /app/data/file.txt
+
+docker inspect mycontainer
+
+docker rm -f mycontainer
+
+docker volume rm mydata
+
+docker volume prune

@@ -1,0 +1,3 @@
+Task A – Run MongoDB Container with Port Mapping
+docker pull mongo
+docker run -d --name DB-app -p 80:8082 mongo

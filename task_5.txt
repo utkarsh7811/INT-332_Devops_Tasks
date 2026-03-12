@@ -1,0 +1,19 @@
+docker start dbcb6a49f493
+
+docker exec -it dbcb6a49f493 ls /
+
+docker exec -it dbcb6a49f493 /bin/bash
+
+mkdir /data
+
+echo "Hello Docker" > /data/test.txt
+
+exit
+
+docker cp dbcb6a49f493:/data/test.txt "C:\Users\utkarsh\OneDrive\Desktop\"
+
+docker cp "C:\Users\utkarsh\OneDrive\Desktop\coco.txt" dbcb6a49f493:/data/sample.txt
+
+docker exec -it dbcb6a49f493 ls /data
+
+docker exec -it dbcb6a49f493 cat /data/sample.txt
