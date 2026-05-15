@@ -1,0 +1,1259 @@
+DEVOPS COMPLETE NOTES
+======================
+
+Purpose:
+This file contains updated DevOps notes with explanations, commands, real-world examples, project ideas, and viva questions.
+All explanations are written in simple English.
+Only viva questions are written in English + Hinglish as requested.
+
+============================================================
+1. DEVOPS OVERVIEW
+============================================================
+
+What is DevOps?
+DevOps is a set of practices that combines Software Development and IT Operations.
+Its main goal is to deliver software faster, with better quality, automation, and continuous feedback.
+
+Main goals of DevOps:
+- Faster software delivery
+- Better collaboration between developers and operations team
+- Automation of build, test, and deployment
+- Early error detection
+- Reliable and repeatable deployment
+- Continuous monitoring and improvement
+
+Why DevOps is used:
+Before DevOps, developers wrote code and operations teams deployed it manually.
+This caused delays, errors, and communication gaps.
+DevOps solves this by using automation, CI/CD pipelines, containers, monitoring, and cloud tools.
+
+DevOps Lifecycle:
+1. Plan
+2. Code
+3. Build
+4. Test
+5. Release
+6. Deploy
+7. Operate
+8. Monitor
+
+Real-world example:
+A developer pushes code to GitHub.
+GitHub Actions or Jenkins automatically builds the code, runs tests, creates a Docker image, and deploys it to a server.
+If any error happens, the team gets logs or alerts.
+
+Common DevOps tools:
+- Git and GitHub: Version control
+- Maven: Java build automation
+- Docker: Containerization
+- Docker Compose: Multi-container setup
+- Jenkins: CI/CD automation
+- GitHub Actions: CI/CD workflows
+- Kubernetes: Container orchestration
+- Terraform: Infrastructure as Code
+- Ansible: Configuration management
+- Prometheus and Grafana: Monitoring
+- AWS/Azure/GCP: Cloud platforms
+
+============================================================
+2. LINUX BASICS FOR DEVOPS
+============================================================
+
+Linux is important because most servers, cloud machines, Docker containers, and DevOps tools run on Linux.
+
+Important Linux commands:
+
+Check current directory:
+pwd
+
+List files:
+ls
+ls -l
+ls -la
+
+Create directory:
+mkdir devops
+
+Go inside directory:
+cd devops
+
+Create file:
+touch file.txt
+
+Edit file:
+vi file.txt
+nano file.txt
+
+View file:
+cat file.txt
+less file.txt
+head file.txt
+tail file.txt
+
+Copy file:
+cp file.txt backup.txt
+
+Move or rename file:
+mv old.txt new.txt
+
+Remove file:
+rm file.txt
+
+Remove directory:
+rm -r foldername
+
+Check running processes:
+ps aux
+top
+
+Check disk usage:
+df -h
+du -sh *
+
+Check IP address:
+ip addr
+
+Check service status:
+systemctl status service-name
+
+Start service:
+sudo systemctl start service-name
+
+Stop service:
+sudo systemctl stop service-name
+
+Real-world example:
+If Jenkins is not opening on port 8080, a DevOps engineer checks service status:
+sudo systemctl status jenkins
+
+Then checks logs:
+sudo journalctl -u jenkins
+
+============================================================
+3. GIT AND GITHUB
+============================================================
+
+Git is used to track source code changes.
+GitHub is used to host Git repositories online.
+
+Common Git commands:
+
+Initialize repository:
+git init
+
+Check status:
+git status
+
+Add files:
+git add .
+
+Commit changes:
+git commit -m "message"
+
+Connect remote repository:
+git remote add origin https://github.com/username/repo.git
+
+Push code:
+git push origin main
+
+Pull latest code:
+git pull origin main
+
+Clone repository:
+git clone https://github.com/username/repo.git
+
+Check branches:
+git branch
+
+Create branch:
+git checkout -b feature-branch
+
+Switch branch:
+git checkout main
+
+Merge branch:
+git merge feature-branch
+
+Real-world example:
+A developer creates a feature branch, pushes code to GitHub, creates a pull request, and CI pipeline runs automatically.
+
+============================================================
+4. DOCKER
+============================================================
+
+Docker is a containerization platform.
+It packages application code, dependencies, runtime, and configuration into containers.
+
+Important terms:
+Image:
+A read-only template used to create containers.
+
+Container:
+A running instance of an image.
+
+Docker Hub:
+A public registry for Docker images.
+
+Dockerfile:
+A file used to build custom images.
+
+Why Docker is used:
+- Same environment everywhere
+- Fast deployment
+- Lightweight compared to virtual machines
+- Easy scaling
+- Useful for microservices
+- Reduces dependency issues
+
+Docker commands:
+
+Check Docker version:
+docker --version
+
+List running containers:
+docker ps
+
+List all containers:
+docker ps -a
+
+List images:
+docker images
+
+Pull image:
+docker pull ubuntu
+
+Run Ubuntu container:
+docker run -it ubuntu bash
+
+Run container in background:
+docker run -dit --name mycontainer ubuntu
+
+Stop container:
+docker stop mycontainer
+
+Start container:
+docker start mycontainer
+
+Remove container:
+docker rm mycontainer
+
+Remove image:
+docker rmi image-name
+
+Execute command inside container:
+docker exec -it mycontainer bash
+
+Attach to container:
+docker attach mycontainer
+
+Copy file from host to container:
+docker cp index.html container_id:/var/www/html/
+
+Copy file from container to host:
+docker cp container_id:/var/www/html/index.html .
+
+Inspect container:
+docker inspect container_id
+
+View logs:
+docker logs container_id
+
+Real-world example:
+A company runs a Node.js app inside Docker so every developer and server uses the same runtime environment.
+
+============================================================
+5. DOCKERFILE
+============================================================
+
+A Dockerfile contains instructions to create a custom Docker image.
+
+Common Dockerfile instructions:
+FROM: Base image
+RUN: Executes command during image build
+COPY: Copies files into image
+WORKDIR: Sets working directory
+EXPOSE: Documents container port
+CMD: Default command when container starts
+ENTRYPOINT: Fixed executable for container
+
+Example NGINX Dockerfile:
+
+FROM nginx:latest
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+Build image:
+docker build -t custom-nginx:v1 .
+
+Run image:
+docker run -d -p 8080:80 --name nginx-container custom-nginx:v1
+
+RUN vs CMD:
+RUN executes during image build.
+CMD executes when container starts.
+
+ENTRYPOINT vs CMD:
+ENTRYPOINT defines fixed command.
+CMD provides default arguments or default command.
+
+Real-world example:
+A Java application is packaged into a Docker image using Dockerfile and deployed on a cloud server.
+
+============================================================
+6. DOCKER VOLUMES
+============================================================
+
+Docker volumes store persistent data.
+If a container is deleted, volume data remains safe.
+
+Create volume:
+docker volume create myvolume
+
+List volumes:
+docker volume ls
+
+Inspect volume:
+docker volume inspect myvolume
+
+Run container with volume:
+docker run -dit --name vol-container -v myvolume:/data ubuntu
+
+Write data:
+docker exec -it vol-container bash
+cd /data
+echo "hello volume" > file.txt
+exit
+
+Remove container:
+docker rm -f vol-container
+
+Verify persistence:
+docker run -dit --name new-container -v myvolume:/data ubuntu
+docker exec -it new-container cat /data/file.txt
+
+Real-world example:
+MySQL data is stored in a Docker volume so database data remains safe even if the MySQL container is recreated.
+
+============================================================
+7. DOCKER NETWORKING
+============================================================
+
+Docker networking allows containers to communicate.
+
+List networks:
+docker network ls
+
+Create bridge network:
+docker network create mybridge
+
+Run containers in same network:
+docker run -dit --name container1 --network mybridge ubuntu
+docker run -dit --name container2 --network mybridge ubuntu
+
+Test connectivity:
+docker exec -it container1 bash
+ping container2
+
+Inspect network:
+docker network inspect mybridge
+
+Remove network:
+docker network rm mybridge
+
+Port mapping:
+docker run -d -p 8080:80 nginx
+
+Real-world example:
+A backend container connects to a database container using service/container name inside the same Docker network.
+
+============================================================
+8. DOCKER COMPOSE
+============================================================
+
+Docker Compose manages multi-container applications using docker-compose.yml.
+
+Basic commands:
+docker compose up
+docker compose up -d
+docker compose down
+docker compose ps
+docker compose logs
+docker compose build
+
+Example docker-compose.yml:
+
+services:
+  frontend:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: devopsdb
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+
+Real-world example:
+A web application may have frontend, backend, and database containers. Docker Compose starts all services together.
+
+============================================================
+9. MAVEN
+============================================================
+
+Maven is a build automation and dependency management tool for Java projects.
+
+Maven helps to:
+- Compile code
+- Run tests
+- Package JAR/WAR
+- Manage dependencies
+- Standardize project structure
+
+Maven project structure:
+src/main/java
+src/main/resources
+src/test/java
+pom.xml
+target/
+
+Important file:
+pom.xml contains project details, dependencies, plugins, and build configuration.
+
+Maven commands:
+mvn -version
+mvn clean
+mvn compile
+mvn test
+mvn package
+mvn install
+mvn deploy
+mvn clean package
+mvn clean package -DskipTests
+
+Maven lifecycle:
+validate: Checks project
+compile: Compiles code
+test: Runs tests
+package: Creates JAR/WAR
+install: Installs package locally
+deploy: Uploads package to remote repository
+
+Real-world example:
+A Java Spring Boot application is built using:
+mvn clean package
+Then Docker image is created using the generated JAR.
+
+============================================================
+10. JENKINS
+============================================================
+
+Jenkins is an open-source automation server used for CI/CD.
+
+Jenkins can:
+- Pull code from GitHub
+- Build code using Maven
+- Run tests
+- Create artifacts
+- Build Docker images
+- Deploy applications
+- Show pipeline status
+
+Jenkins default port:
+8080
+
+Jenkins commands:
+sudo systemctl start jenkins
+sudo systemctl stop jenkins
+sudo systemctl restart jenkins
+sudo systemctl status jenkins
+sudo systemctl enable jenkins
+sudo journalctl -u jenkins
+
+Basic Jenkins pipeline:
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/username/repository-name.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+    }
+}
+
+Real-world example:
+When a developer pushes code to GitHub, Jenkins webhook triggers a pipeline that builds and tests the application automatically.
+
+============================================================
+11. GITHUB ACTIONS
+============================================================
+
+GitHub Actions is a CI/CD tool inside GitHub.
+Workflows are written in YAML files.
+
+Workflow path:
+.github/workflows/workflow-name.yml
+
+Example Java CI workflow:
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Run Tests
+        run: mvn test
+
+Real-world example:
+A GitHub Actions workflow automatically checks every pull request before merging code into main branch.
+
+============================================================
+12. CI/CD PIPELINE
+============================================================
+
+CI means Continuous Integration.
+Developers frequently merge code into a shared repository, and automated builds/tests run.
+
+CD means Continuous Delivery or Continuous Deployment.
+Continuous Delivery means code is ready for deployment.
+Continuous Deployment means code is automatically deployed.
+
+Typical CI/CD pipeline:
+1. Developer pushes code
+2. Pipeline starts
+3. Code checkout
+4. Dependency installation
+5. Build
+6. Test
+7. Package
+8. Docker image build
+9. Push image to registry
+10. Deploy
+11. Monitor
+
+Real-world example:
+E-commerce company uses CI/CD to deploy new features quickly without manual deployment errors.
+
+============================================================
+13. MONITORING AND LOGGING
+============================================================
+
+Monitoring checks system health.
+Logging stores events and errors.
+
+Monitoring tools:
+- Prometheus
+- Grafana
+- CloudWatch
+- Azure Monitor
+
+Logging tools:
+- ELK Stack
+- Loki
+- CloudWatch Logs
+
+Common things to monitor:
+- CPU usage
+- Memory usage
+- Disk usage
+- Application errors
+- Response time
+- Container status
+- Database health
+
+Real-world example:
+If an application response time increases, monitoring alerts the DevOps team before users are heavily affected.
+
+============================================================
+14. CLOUD AND DEVOPS
+============================================================
+
+Cloud platforms provide infrastructure for DevOps.
+
+Common cloud services:
+- Virtual machines
+- Storage
+- Load balancers
+- Databases
+- Container services
+- Monitoring
+- IAM
+
+AWS examples:
+EC2: Virtual server
+S3: Object storage
+IAM: User and permission management
+CloudWatch: Monitoring
+Lambda: Serverless function
+RDS: Managed database
+ECR: Docker image registry
+
+Real-world example:
+A Docker image is pushed to AWS ECR and deployed on EC2 or ECS.
+
+============================================================
+15. REAL WORLD DEVOPS PROJECT IDEAS
+============================================================
+
+Project 1: Dockerized Java Application with Maven and GitHub Actions
+Description:
+Create a simple Java application, build it using Maven, create Docker image, and automate build using GitHub Actions.
+
+Skills:
+- Java
+- Maven
+- Dockerfile
+- GitHub Actions
+- CI pipeline
+
+Project 2: Multi-Container Web App using Docker Compose
+Description:
+Create frontend, backend, and database containers using Docker Compose.
+
+Skills:
+- Docker Compose
+- Networking
+- Volumes
+- PostgreSQL/MySQL
+- Multi-container architecture
+
+Project 3: Jenkins CI/CD Pipeline for Java App
+Description:
+Create Jenkins pipeline that pulls code from GitHub, builds using Maven, runs tests, builds Docker image, and runs container.
+
+Skills:
+- Jenkins
+- Maven
+- Docker
+- GitHub webhook
+- CI/CD pipeline
+
+Extra Project Ideas:
+- Static website deployment using Docker and NGINX
+- WordPress with MySQL using Docker Compose
+- Monitoring Docker containers using Prometheus and Grafana
+- Deploy Java app on AWS EC2 using Docker
+- Build and push Docker image to Docker Hub using GitHub Actions
+
+============================================================
+16. IMPORTANT COMMAND CHEAT SHEET
+============================================================
+
+Linux:
+pwd
+ls -la
+cd folder
+mkdir folder
+touch file.txt
+cat file.txt
+rm file.txt
+systemctl status service
+journalctl -u service
+
+Git:
+git init
+git status
+git add .
+git commit -m "message"
+git push origin main
+git pull origin main
+git clone repo-url
+
+Docker:
+docker ps
+docker ps -a
+docker images
+docker run -it ubuntu bash
+docker exec -it container bash
+docker stop container
+docker rm container
+docker build -t image:v1 .
+docker run -d -p 8080:80 image:v1
+
+Docker Compose:
+docker compose up -d
+docker compose down
+docker compose ps
+docker compose logs
+docker compose build
+
+Maven:
+mvn clean
+mvn compile
+mvn test
+mvn package
+mvn install
+mvn clean package
+
+Jenkins:
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+sudo journalctl -u jenkins
+
+============================================================
+17. VIVA QUESTIONS - ENGLISH + HINGLISH
+============================================================
+
+
+--- DEVOPS OVERVIEW VIVA QUESTIONS ---
+
+1. English: What is DevOps Overview?
+   Hinglish: DevOps Overview kya hota hai?
+
+2. English: Why is DevOps Overview important in DevOps?
+   Hinglish: DevOps Overview DevOps me important kyu hai?
+
+3. English: How is DevOps Overview used in real projects?
+   Hinglish: DevOps Overview real project me kaise use hota hai?
+
+4. English: What problem does DevOps Overview solve?
+   Hinglish: DevOps Overview kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in DevOps Overview?
+   Hinglish: DevOps Overview me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of DevOps Overview?
+   Hinglish: DevOps Overview ke advantages kya hain?
+
+7. English: What are the limitations of DevOps Overview?
+   Hinglish: DevOps Overview ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in DevOps Overview?
+   Hinglish: DevOps Overview me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of DevOps Overview?
+   Hinglish: DevOps Overview ka ek real-world example kya hai?
+
+10. English: How does DevOps Overview connect with CI/CD?
+   Hinglish: DevOps Overview CI/CD ke saath kaise connect hota hai?
+
+
+--- LINUX BASICS FOR DEVOPS VIVA QUESTIONS ---
+
+1. English: What is Linux Basics for DevOps?
+   Hinglish: Linux Basics for DevOps kya hota hai?
+
+2. English: Why is Linux Basics for DevOps important in DevOps?
+   Hinglish: Linux Basics for DevOps DevOps me important kyu hai?
+
+3. English: How is Linux Basics for DevOps used in real projects?
+   Hinglish: Linux Basics for DevOps real project me kaise use hota hai?
+
+4. English: What problem does Linux Basics for DevOps solve?
+   Hinglish: Linux Basics for DevOps kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Linux Basics for DevOps?
+   Hinglish: Linux Basics for DevOps me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Linux Basics for DevOps?
+   Hinglish: Linux Basics for DevOps ke advantages kya hain?
+
+7. English: What are the limitations of Linux Basics for DevOps?
+   Hinglish: Linux Basics for DevOps ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Linux Basics for DevOps?
+   Hinglish: Linux Basics for DevOps me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Linux Basics for DevOps?
+   Hinglish: Linux Basics for DevOps ka ek real-world example kya hai?
+
+10. English: How does Linux Basics for DevOps connect with CI/CD?
+   Hinglish: Linux Basics for DevOps CI/CD ke saath kaise connect hota hai?
+
+
+--- GIT AND GITHUB VIVA QUESTIONS ---
+
+1. English: What is Git and GitHub?
+   Hinglish: Git and GitHub kya hota hai?
+
+2. English: Why is Git and GitHub important in DevOps?
+   Hinglish: Git and GitHub DevOps me important kyu hai?
+
+3. English: How is Git and GitHub used in real projects?
+   Hinglish: Git and GitHub real project me kaise use hota hai?
+
+4. English: What problem does Git and GitHub solve?
+   Hinglish: Git and GitHub kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Git and GitHub?
+   Hinglish: Git and GitHub me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Git and GitHub?
+   Hinglish: Git and GitHub ke advantages kya hain?
+
+7. English: What are the limitations of Git and GitHub?
+   Hinglish: Git and GitHub ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Git and GitHub?
+   Hinglish: Git and GitHub me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Git and GitHub?
+   Hinglish: Git and GitHub ka ek real-world example kya hai?
+
+10. English: How does Git and GitHub connect with CI/CD?
+   Hinglish: Git and GitHub CI/CD ke saath kaise connect hota hai?
+
+
+--- DOCKER VIVA QUESTIONS ---
+
+1. English: What is Docker?
+   Hinglish: Docker kya hota hai?
+
+2. English: Why is Docker important in DevOps?
+   Hinglish: Docker DevOps me important kyu hai?
+
+3. English: How is Docker used in real projects?
+   Hinglish: Docker real project me kaise use hota hai?
+
+4. English: What problem does Docker solve?
+   Hinglish: Docker kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Docker?
+   Hinglish: Docker me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Docker?
+   Hinglish: Docker ke advantages kya hain?
+
+7. English: What are the limitations of Docker?
+   Hinglish: Docker ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Docker?
+   Hinglish: Docker me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Docker?
+   Hinglish: Docker ka ek real-world example kya hai?
+
+10. English: How does Docker connect with CI/CD?
+   Hinglish: Docker CI/CD ke saath kaise connect hota hai?
+
+
+--- DOCKERFILE VIVA QUESTIONS ---
+
+1. English: What is Dockerfile?
+   Hinglish: Dockerfile kya hota hai?
+
+2. English: Why is Dockerfile important in DevOps?
+   Hinglish: Dockerfile DevOps me important kyu hai?
+
+3. English: How is Dockerfile used in real projects?
+   Hinglish: Dockerfile real project me kaise use hota hai?
+
+4. English: What problem does Dockerfile solve?
+   Hinglish: Dockerfile kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Dockerfile?
+   Hinglish: Dockerfile me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Dockerfile?
+   Hinglish: Dockerfile ke advantages kya hain?
+
+7. English: What are the limitations of Dockerfile?
+   Hinglish: Dockerfile ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Dockerfile?
+   Hinglish: Dockerfile me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Dockerfile?
+   Hinglish: Dockerfile ka ek real-world example kya hai?
+
+10. English: How does Dockerfile connect with CI/CD?
+   Hinglish: Dockerfile CI/CD ke saath kaise connect hota hai?
+
+
+--- DOCKER VOLUMES VIVA QUESTIONS ---
+
+1. English: What is Docker Volumes?
+   Hinglish: Docker Volumes kya hota hai?
+
+2. English: Why is Docker Volumes important in DevOps?
+   Hinglish: Docker Volumes DevOps me important kyu hai?
+
+3. English: How is Docker Volumes used in real projects?
+   Hinglish: Docker Volumes real project me kaise use hota hai?
+
+4. English: What problem does Docker Volumes solve?
+   Hinglish: Docker Volumes kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Docker Volumes?
+   Hinglish: Docker Volumes me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Docker Volumes?
+   Hinglish: Docker Volumes ke advantages kya hain?
+
+7. English: What are the limitations of Docker Volumes?
+   Hinglish: Docker Volumes ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Docker Volumes?
+   Hinglish: Docker Volumes me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Docker Volumes?
+   Hinglish: Docker Volumes ka ek real-world example kya hai?
+
+10. English: How does Docker Volumes connect with CI/CD?
+   Hinglish: Docker Volumes CI/CD ke saath kaise connect hota hai?
+
+
+--- DOCKER NETWORKING VIVA QUESTIONS ---
+
+1. English: What is Docker Networking?
+   Hinglish: Docker Networking kya hota hai?
+
+2. English: Why is Docker Networking important in DevOps?
+   Hinglish: Docker Networking DevOps me important kyu hai?
+
+3. English: How is Docker Networking used in real projects?
+   Hinglish: Docker Networking real project me kaise use hota hai?
+
+4. English: What problem does Docker Networking solve?
+   Hinglish: Docker Networking kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Docker Networking?
+   Hinglish: Docker Networking me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Docker Networking?
+   Hinglish: Docker Networking ke advantages kya hain?
+
+7. English: What are the limitations of Docker Networking?
+   Hinglish: Docker Networking ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Docker Networking?
+   Hinglish: Docker Networking me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Docker Networking?
+   Hinglish: Docker Networking ka ek real-world example kya hai?
+
+10. English: How does Docker Networking connect with CI/CD?
+   Hinglish: Docker Networking CI/CD ke saath kaise connect hota hai?
+
+
+--- DOCKER COMPOSE VIVA QUESTIONS ---
+
+1. English: What is Docker Compose?
+   Hinglish: Docker Compose kya hota hai?
+
+2. English: Why is Docker Compose important in DevOps?
+   Hinglish: Docker Compose DevOps me important kyu hai?
+
+3. English: How is Docker Compose used in real projects?
+   Hinglish: Docker Compose real project me kaise use hota hai?
+
+4. English: What problem does Docker Compose solve?
+   Hinglish: Docker Compose kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Docker Compose?
+   Hinglish: Docker Compose me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Docker Compose?
+   Hinglish: Docker Compose ke advantages kya hain?
+
+7. English: What are the limitations of Docker Compose?
+   Hinglish: Docker Compose ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Docker Compose?
+   Hinglish: Docker Compose me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Docker Compose?
+   Hinglish: Docker Compose ka ek real-world example kya hai?
+
+10. English: How does Docker Compose connect with CI/CD?
+   Hinglish: Docker Compose CI/CD ke saath kaise connect hota hai?
+
+
+--- MAVEN VIVA QUESTIONS ---
+
+1. English: What is Maven?
+   Hinglish: Maven kya hota hai?
+
+2. English: Why is Maven important in DevOps?
+   Hinglish: Maven DevOps me important kyu hai?
+
+3. English: How is Maven used in real projects?
+   Hinglish: Maven real project me kaise use hota hai?
+
+4. English: What problem does Maven solve?
+   Hinglish: Maven kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Maven?
+   Hinglish: Maven me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Maven?
+   Hinglish: Maven ke advantages kya hain?
+
+7. English: What are the limitations of Maven?
+   Hinglish: Maven ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Maven?
+   Hinglish: Maven me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Maven?
+   Hinglish: Maven ka ek real-world example kya hai?
+
+10. English: How does Maven connect with CI/CD?
+   Hinglish: Maven CI/CD ke saath kaise connect hota hai?
+
+
+--- JENKINS VIVA QUESTIONS ---
+
+1. English: What is Jenkins?
+   Hinglish: Jenkins kya hota hai?
+
+2. English: Why is Jenkins important in DevOps?
+   Hinglish: Jenkins DevOps me important kyu hai?
+
+3. English: How is Jenkins used in real projects?
+   Hinglish: Jenkins real project me kaise use hota hai?
+
+4. English: What problem does Jenkins solve?
+   Hinglish: Jenkins kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Jenkins?
+   Hinglish: Jenkins me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Jenkins?
+   Hinglish: Jenkins ke advantages kya hain?
+
+7. English: What are the limitations of Jenkins?
+   Hinglish: Jenkins ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Jenkins?
+   Hinglish: Jenkins me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Jenkins?
+   Hinglish: Jenkins ka ek real-world example kya hai?
+
+10. English: How does Jenkins connect with CI/CD?
+   Hinglish: Jenkins CI/CD ke saath kaise connect hota hai?
+
+
+--- GITHUB ACTIONS VIVA QUESTIONS ---
+
+1. English: What is GitHub Actions?
+   Hinglish: GitHub Actions kya hota hai?
+
+2. English: Why is GitHub Actions important in DevOps?
+   Hinglish: GitHub Actions DevOps me important kyu hai?
+
+3. English: How is GitHub Actions used in real projects?
+   Hinglish: GitHub Actions real project me kaise use hota hai?
+
+4. English: What problem does GitHub Actions solve?
+   Hinglish: GitHub Actions kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in GitHub Actions?
+   Hinglish: GitHub Actions me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of GitHub Actions?
+   Hinglish: GitHub Actions ke advantages kya hain?
+
+7. English: What are the limitations of GitHub Actions?
+   Hinglish: GitHub Actions ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in GitHub Actions?
+   Hinglish: GitHub Actions me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of GitHub Actions?
+   Hinglish: GitHub Actions ka ek real-world example kya hai?
+
+10. English: How does GitHub Actions connect with CI/CD?
+   Hinglish: GitHub Actions CI/CD ke saath kaise connect hota hai?
+
+
+--- CI/CD PIPELINE VIVA QUESTIONS ---
+
+1. English: What is CI/CD Pipeline?
+   Hinglish: CI/CD Pipeline kya hota hai?
+
+2. English: Why is CI/CD Pipeline important in DevOps?
+   Hinglish: CI/CD Pipeline DevOps me important kyu hai?
+
+3. English: How is CI/CD Pipeline used in real projects?
+   Hinglish: CI/CD Pipeline real project me kaise use hota hai?
+
+4. English: What problem does CI/CD Pipeline solve?
+   Hinglish: CI/CD Pipeline kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in CI/CD Pipeline?
+   Hinglish: CI/CD Pipeline me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of CI/CD Pipeline?
+   Hinglish: CI/CD Pipeline ke advantages kya hain?
+
+7. English: What are the limitations of CI/CD Pipeline?
+   Hinglish: CI/CD Pipeline ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in CI/CD Pipeline?
+   Hinglish: CI/CD Pipeline me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of CI/CD Pipeline?
+   Hinglish: CI/CD Pipeline ka ek real-world example kya hai?
+
+10. English: How does CI/CD Pipeline connect with CI/CD?
+   Hinglish: CI/CD Pipeline CI/CD ke saath kaise connect hota hai?
+
+
+--- MONITORING AND LOGGING VIVA QUESTIONS ---
+
+1. English: What is Monitoring and Logging?
+   Hinglish: Monitoring and Logging kya hota hai?
+
+2. English: Why is Monitoring and Logging important in DevOps?
+   Hinglish: Monitoring and Logging DevOps me important kyu hai?
+
+3. English: How is Monitoring and Logging used in real projects?
+   Hinglish: Monitoring and Logging real project me kaise use hota hai?
+
+4. English: What problem does Monitoring and Logging solve?
+   Hinglish: Monitoring and Logging kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Monitoring and Logging?
+   Hinglish: Monitoring and Logging me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Monitoring and Logging?
+   Hinglish: Monitoring and Logging ke advantages kya hain?
+
+7. English: What are the limitations of Monitoring and Logging?
+   Hinglish: Monitoring and Logging ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Monitoring and Logging?
+   Hinglish: Monitoring and Logging me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Monitoring and Logging?
+   Hinglish: Monitoring and Logging ka ek real-world example kya hai?
+
+10. English: How does Monitoring and Logging connect with CI/CD?
+   Hinglish: Monitoring and Logging CI/CD ke saath kaise connect hota hai?
+
+
+--- CLOUD AND DEVOPS VIVA QUESTIONS ---
+
+1. English: What is Cloud and DevOps?
+   Hinglish: Cloud and DevOps kya hota hai?
+
+2. English: Why is Cloud and DevOps important in DevOps?
+   Hinglish: Cloud and DevOps DevOps me important kyu hai?
+
+3. English: How is Cloud and DevOps used in real projects?
+   Hinglish: Cloud and DevOps real project me kaise use hota hai?
+
+4. English: What problem does Cloud and DevOps solve?
+   Hinglish: Cloud and DevOps kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Cloud and DevOps?
+   Hinglish: Cloud and DevOps me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Cloud and DevOps?
+   Hinglish: Cloud and DevOps ke advantages kya hain?
+
+7. English: What are the limitations of Cloud and DevOps?
+   Hinglish: Cloud and DevOps ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Cloud and DevOps?
+   Hinglish: Cloud and DevOps me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Cloud and DevOps?
+   Hinglish: Cloud and DevOps ka ek real-world example kya hai?
+
+10. English: How does Cloud and DevOps connect with CI/CD?
+   Hinglish: Cloud and DevOps CI/CD ke saath kaise connect hota hai?
+
+
+--- REAL WORLD DEVOPS WORKFLOW VIVA QUESTIONS ---
+
+1. English: What is Real World DevOps Workflow?
+   Hinglish: Real World DevOps Workflow kya hota hai?
+
+2. English: Why is Real World DevOps Workflow important in DevOps?
+   Hinglish: Real World DevOps Workflow DevOps me important kyu hai?
+
+3. English: How is Real World DevOps Workflow used in real projects?
+   Hinglish: Real World DevOps Workflow real project me kaise use hota hai?
+
+4. English: What problem does Real World DevOps Workflow solve?
+   Hinglish: Real World DevOps Workflow kaunsa problem solve karta hai?
+
+5. English: What are common commands or files used in Real World DevOps Workflow?
+   Hinglish: Real World DevOps Workflow me common commands ya files kaunse hote hain?
+
+6. English: What are the advantages of Real World DevOps Workflow?
+   Hinglish: Real World DevOps Workflow ke advantages kya hain?
+
+7. English: What are the limitations of Real World DevOps Workflow?
+   Hinglish: Real World DevOps Workflow ki limitations kya hain?
+
+8. English: How do you troubleshoot issues in Real World DevOps Workflow?
+   Hinglish: Real World DevOps Workflow me issue aaye to troubleshoot kaise karoge?
+
+9. English: What is one real-world example of Real World DevOps Workflow?
+   Hinglish: Real World DevOps Workflow ka ek real-world example kya hai?
+
+10. English: How does Real World DevOps Workflow connect with CI/CD?
+   Hinglish: Real World DevOps Workflow CI/CD ke saath kaise connect hota hai?
+
+
+============================================================
+18. QUICK REVISION POINTS
+============================================================
+
+- DevOps improves collaboration and automation.
+- Git tracks code changes.
+- GitHub hosts repositories.
+- Docker packages applications into containers.
+- Dockerfile builds custom images.
+- Docker volumes store persistent data.
+- Docker networks connect containers.
+- Docker Compose manages multi-container apps.
+- Maven builds Java applications.
+- Jenkins automates CI/CD pipelines.
+- GitHub Actions runs CI/CD workflows inside GitHub.
+- CI/CD reduces manual work and deployment errors.
+- Monitoring helps detect problems early.
+
+============================================================
+END OF DEVOPS NOTES
+============================================================
