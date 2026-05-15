@@ -1,74 +1,113 @@
-DevOps Tasks – Docker, Maven, and CI/CD
-This repository contains my 15-day DevOps practical learning journey.  
-The main focus is on Docker containers, Docker volumes, Docker networking, Docker Compose, Maven build automation, and CI/CD using GitHub Actions.
+# 🚀 DevOps Hands-on Lab: Docker, Maven, Jenkins & CI/CD
+
+Welcome to my DevOps practice repository.  
+This repo is a collection of my hands-on tasks, notes, commands, and CI/CD practice work based on **Docker, Maven, Jenkins, Docker Compose, and GitHub Actions**.
+
+The goal of this repository is not only to store commands, but to show my practical DevOps learning journey from basic container setup to automated CI/CD pipelines.
+
 ---
-📌 Repository Objective
-The purpose of this repository is to document and practice important DevOps concepts through hands-on tasks.
-By completing these tasks, I practiced:
-Container creation and management
-Apache and NGINX container setup
-Docker volumes and persistent storage
-Docker networking and bridge networks
-Multi-container application setup
-Docker Compose
-Maven build automation
-Maven Wrapper usage
-Dockerizing Java applications
-GitHub Actions CI/CD pipeline
-Multi-container CI/CD workflow
+
+## 🎯 What This Repository Covers
+
+This repository includes practical work on:
+
+- Docker container creation and management
+- Apache and NGINX web server containers
+- Docker volumes and persistent storage
+- Docker networking and bridge networks
+- MySQL container setup
+- Multi-container applications using Docker Compose
+- Maven build automation for Java projects
+- Maven Wrapper usage
+- Dockerizing Java applications
+- Jenkins CI/CD pipeline concepts
+- GitHub Actions based CI/CD automation
+
 ---
-🛠️ Tools and Technologies Used
-Tool / Technology	Purpose
-Docker	Containerization
-Dockerfile	Custom image creation
-Docker Volumes	Persistent storage
-Docker Network	Container communication
-Docker Compose	Multi-container application management
-Apache HTTP Server	Web server container practice
-NGINX	Custom web server image
-MySQL	Database container practice
-PostgreSQL	Database service in Docker Compose
-Maven	Java build automation
-Maven Wrapper	Running Maven without local Maven installation
-GitHub Actions	CI/CD automation
-GitHub	Version control and repository hosting
+
+## 🧰 Tech Stack Used
+
+| Technology | Purpose |
+|---|---|
+| Docker | Containerization and application packaging |
+| Dockerfile | Creating custom Docker images |
+| Docker Volumes | Data persistence |
+| Docker Network | Communication between containers |
+| Docker Compose | Running multi-container applications |
+| Apache | Web server container practice |
+| NGINX | Custom web server image practice |
+| MySQL | Database container practice |
+| PostgreSQL | Database service in compose setup |
+| Maven | Java build automation and dependency management |
+| Maven Wrapper | Running Maven without local Maven installation |
+| Jenkins | CI/CD automation server |
+| GitHub Actions | Automated CI/CD workflows |
+| GitHub | Version control and project hosting |
+
 ---
-📅 15-Day DevOps Task Summary
-Day	Topic Practiced	Description
-Day 01	Apache Container Setup	Created Apache container, performed file manipulation, used `docker cp`, and practiced `docker attach` vs `docker exec`.
-Day 02	Docker Named Volumes	Practiced named volumes and understood container data persistence.
-Day 03	Docker Questions + MySQL	Practiced Docker questions and created a MySQL container setup.
-Day 04	Custom NGINX Image	Built a custom NGINX Docker image using a Dockerfile.
-Day 05	Networking, Volumes, Architecture	Practiced Docker networking, volumes, and multi-container architecture.
-Day 06	Volume Persistence Practical	Created Docker volume, attached it to a container, stored data, removed container, and verified persistence.
-Day 07	Bridge Network Practical	Created bridge network, connected containers, tested communication, and deleted network/containers.
-Day 08	Docker Compose Multi-Container App	Created Frontend + Backend + PostgreSQL setup using Docker Compose.
-Day 09	Docker Compose Practice	Practiced Docker Compose commands and service management.
-Day 10	Maven Build with Docker Compose	Used Docker Compose for Maven build in a containerized build environment.
-Day 11	Maven + Docker Integration	Built JAR using Maven, created Docker image, and ran Java app container.
-Day 12	Maven Wrapper	Practiced `mvnw` and Java JAR execution.
-Day 13	GitHub Actions with Docker	Created CI/CD workflow for automatic Docker image build on push.
-Day 14	Multi-Container CI/CD	Practiced CI/CD workflow using Docker Compose.
-Day 15	Java CI Pipeline	Created Java CI pipeline using Maven and GitHub Actions.
+
+## 📅 15-Day DevOps Practice Journey
+
+| Day | Task | What I Practiced |
+|---|---|---|
+| Day 01 | Apache Container Setup | Created Apache container, copied files using `docker cp`, and practiced `attach` vs `exec`. |
+| Day 02 | Docker Named Volumes | Created named volumes and understood how container data persists. |
+| Day 03 | Docker Questions + MySQL | Practiced Docker concepts and created a MySQL container. |
+| Day 04 | Custom NGINX Image | Built a custom NGINX image using Dockerfile. |
+| Day 05 | Docker Networking & Volumes | Practiced networking, volumes, and multi-container architecture. |
+| Day 06 | Volume Persistence | Created volume, stored data, removed container, and verified data persistence. |
+| Day 07 | Bridge Network | Created bridge network, connected containers, tested communication, and deleted resources. |
+| Day 08 | Compose Multi-Container App | Built Frontend + Backend + PostgreSQL setup using Docker Compose. |
+| Day 09 | Docker Compose Practice | Practiced compose commands like up, down, logs, ps, and build. |
+| Day 10 | Maven Build with Compose | Used Docker Compose for Maven build in a containerized environment. |
+| Day 11 | Maven + Docker | Built JAR with Maven, created Docker image, and ran Java app container. |
+| Day 12 | Maven Wrapper | Practiced `mvnw` and Java JAR execution. |
+| Day 13 | GitHub Actions + Docker | Automated Docker image build on code push. |
+| Day 14 | Multi-Container CI/CD | Practiced CI/CD workflow using Docker Compose. |
+| Day 15 | Java CI Pipeline | Created Java CI pipeline using Maven and GitHub Actions. |
+
 ---
-📂 Suggested Repository Structure
+
+## 🧠 Core Concepts Learned
+
+### Docker
+Docker is used to package applications with dependencies into lightweight containers.  
+I practiced images, containers, volumes, networks, Dockerfile, and Docker Compose.
+
+### Maven
+Maven is a build automation and dependency management tool mainly used for Java projects.  
+I practiced Maven lifecycle phases like `clean`, `compile`, `test`, `package`, and `install`.
+
+### Jenkins
+Jenkins is an automation server used for CI/CD pipelines.  
+I learned Jenkins pipeline flow, Jenkinsfile basics, Maven integration, Docker integration, and webhook concepts.
+
+### CI/CD
+CI/CD helps automate build, test, package, and deployment processes.  
+I practiced CI/CD using GitHub Actions and studied Jenkins pipeline workflow.
+
+---
+
+## 📂 Suggested Folder Structure
+
 ```text
 devops-tasks/
 │
 ├── day-01-apache-container/
-│   ├── README.md
-│   └── commands.txt
+│   ├── commands.txt
+│   └── README.md
 │
 ├── day-02-docker-volumes/
-│   ├── README.md
-│   └── commands.txt
+│   ├── commands.txt
+│   └── README.md
 │
 ├── day-03-mysql-container/
-│   ├── README.md
-│   └── commands.txt
+│   ├── commands.txt
+│   └── README.md
 │
 ├── day-04-nginx-dockerfile/
 │   ├── Dockerfile
+│   ├── index.html
 │   └── README.md
 │
 ├── day-08-docker-compose-app/
@@ -81,185 +120,131 @@ devops-tasks/
 │   └── README.md
 │
 ├── day-13-github-actions-docker/
-│   └── .github/
-│       └── workflows/
-│           └── docker-build.yml
+│   └── .github/workflows/docker-build.yml
 │
 ├── day-15-java-ci-maven/
-│   ├── pom.xml
-│   └── .github/
-│       └── workflows/
-│           └── java-ci.yml
+│   └── .github/workflows/java-ci.yml
 │
 └── README.md
 ```
+
 ---
-🐳 Important Docker Commands
-Check Docker Version
+
+## 🐳 Docker Commands Practiced
+
 ```bash
 docker --version
-```
-List Running Containers
-```bash
 docker ps
-```
-List All Containers
-```bash
 docker ps -a
-```
-List Docker Images
-```bash
 docker images
-```
-Pull Docker Image
-```bash
 docker pull ubuntu
-```
-Run Container
-```bash
 docker run -it ubuntu bash
-```
-Run Container in Detached Mode
-```bash
 docker run -dit --name mycontainer ubuntu
-```
-Stop Container
-```bash
-docker stop <container_name_or_id>
-```
-Start Container
-```bash
-docker start <container_name_or_id>
-```
-Remove Container
-```bash
-docker rm <container_name_or_id>
-```
-Remove Image
-```bash
+docker start <container_name>
+docker stop <container_name>
+docker rm <container_name>
 docker rmi <image_name>
 ```
----
-📁 Docker File Copy Command
-Copy File from Host to Container
+
+### Copy Files Between Host and Container
+
 ```bash
 docker cp index.html <container_id>:/var/www/html/
-```
-Copy File from Container to Host
-```bash
 docker cp <container_id>:/var/www/html/index.html .
 ```
----
-🔗 docker attach vs docker exec
-Command	Use
-`docker attach`	Connects to the main running process of a container
-`docker exec`	Runs a new command inside a running container
-Example
-```bash
-docker attach <container_id>
-```
+
+### Enter Running Container
+
 ```bash
 docker exec -it <container_id> bash
 ```
-> Best practice: Use `docker exec` for entering a running container because it does not disturb the main process.
+
+### Attach Container
+
+```bash
+docker attach <container_id>
+```
+
+> I learned that `docker exec` is safer for opening a new shell inside a running container, while `docker attach` connects to the main process.
+
 ---
-📦 Docker Volumes
-Docker volumes are used to store persistent data.
-Create Volume
+
+## 📦 Docker Volume Practice
+
 ```bash
 docker volume create myvolume
-```
-List Volumes
-```bash
 docker volume ls
-```
-Run Container with Volume
-```bash
 docker run -dit --name vol-container -v myvolume:/data ubuntu
-```
-Verify Data Persistence
-```bash
 docker exec -it vol-container bash
+```
+
+Inside container:
+
+```bash
 cd /data
-echo "Hello Docker Volume" > file.txt
+echo "Persistent Docker Data" > file.txt
 exit
+```
 
+Remove and verify:
+
+```bash
 docker rm -f vol-container
-
 docker run -dit --name new-container -v myvolume:/data ubuntu
 docker exec -it new-container cat /data/file.txt
 ```
+
 ---
-🌐 Docker Networking
-List Networks
+
+## 🌐 Docker Network Practice
+
 ```bash
 docker network ls
-```
-Create Bridge Network
-```bash
 docker network create mybridge
-```
-Run Containers in Same Network
-```bash
 docker run -dit --name container1 --network mybridge ubuntu
 docker run -dit --name container2 --network mybridge ubuntu
-```
-Test Container Connectivity
-```bash
 docker exec -it container1 bash
 ping container2
-```
-Remove Network
-```bash
 docker network rm mybridge
 ```
+
 ---
-🧱 Dockerfile Example for NGINX
+
+## 🧱 Custom NGINX Dockerfile
+
 ```Dockerfile
 FROM nginx:latest
 COPY index.html /usr/share/nginx/html/index.html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
-Build Image
+
+Build and run:
+
 ```bash
 docker build -t custom-nginx:v1 .
-```
-Run Container
-```bash
 docker run -d -p 8080:80 --name nginx-container custom-nginx:v1
 ```
-Open in browser:
-```text
-http://localhost:8080
-```
+
 ---
-🗄️ MySQL Container Setup
+
+## 🗄️ MySQL Container Setup
+
 ```bash
 docker run -d   --name mysql-container   -e MYSQL_ROOT_PASSWORD=root123   -e MYSQL_DATABASE=devopsdb   -e MYSQL_USER=devops   -e MYSQL_PASSWORD=devops123   mysql:latest
 ```
-Enter MySQL Container
+
+Login:
+
 ```bash
 docker exec -it mysql-container bash
-```
-Login to MySQL
-```bash
 mysql -u root -p
 ```
+
 ---
-🧩 Docker Compose
-Docker Compose is used to manage multi-container applications using a `docker-compose.yml` file.
-Basic Docker Compose Commands
-```bash
-docker compose up
-docker compose up -d
-docker compose down
-docker compose ps
-docker compose logs
-docker compose build
-```
----
-🧪 Example Docker Compose File
+
+## 🧩 Docker Compose Example
+
 ```yaml
 services:
   frontend:
@@ -284,10 +269,36 @@ services:
 volumes:
   postgres_data:
 ```
+
+Compose commands:
+
+```bash
+docker compose up -d
+docker compose ps
+docker compose logs
+docker compose build
+docker compose down
+```
+
 ---
-☕ Maven Build Automation
-Maven is used to build and manage Java projects.
-Common Maven Commands
+
+## ☕ Maven Build Automation
+
+Maven helps in compiling, testing, packaging, and managing dependencies for Java projects.
+
+### Maven Lifecycle
+
+| Phase | Purpose |
+|---|---|
+| validate | Checks project correctness |
+| compile | Compiles source code |
+| test | Runs test cases |
+| package | Creates JAR/WAR file |
+| install | Stores package in local repository |
+| deploy | Uploads package to remote repository |
+
+### Maven Commands
+
 ```bash
 mvn -version
 mvn clean
@@ -298,21 +309,19 @@ mvn install
 mvn clean package
 mvn clean package -DskipTests
 ```
-Maven Build Lifecycle
-Phase	Purpose
-validate	Checks project correctness
-compile	Compiles source code
-test	Runs test cases
-package	Creates JAR/WAR file
-install	Installs package in local repository
-deploy	Deploys package to remote repository
+
 ---
-📦 Maven + Docker Integration
-Build JAR File
+
+## 📦 Maven + Docker Integration
+
+Build JAR:
+
 ```bash
 mvn clean package
 ```
-Dockerfile for Java JAR
+
+Dockerfile:
+
 ```Dockerfile
 FROM openjdk:17-jdk-slim
 WORKDIR /app
@@ -320,61 +329,38 @@ COPY target/*.jar app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
 ```
-Build Docker Image
+
+Build and run:
+
 ```bash
 docker build -t java-maven-app:v1 .
-```
-Run Docker Container
-```bash
 docker run -d -p 8080:8080 --name java-app java-maven-app:v1
 ```
+
 ---
-▶️ Maven Wrapper
-Maven Wrapper allows running Maven without installing Maven manually.
-Commands
+
+## ▶️ Maven Wrapper Practice
+
+Linux/macOS:
+
 ```bash
 ./mvnw clean package
 ./mvnw test
 java -jar target/*.jar
 ```
-For Windows:
+
+Windows:
+
 ```bash
 mvnw.cmd clean package
 mvnw.cmd test
 java -jar target/*.jar
 ```
+
 ---
-⚙️ GitHub Actions CI/CD with Docker
-Create this file:
-```text
-.github/workflows/docker-build.yml
-```
-Docker Build Workflow
-```yaml
-name: Docker Build CI
 
-on:
-  push:
-    branches:
-      - main
+## ⚙️ GitHub Actions: Java CI with Maven
 
-jobs:
-  docker-build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Build Docker Image
-        run: docker build -t devops-app:latest .
-```
----
-☕ Java CI Pipeline with Maven
-Create this file:
-```text
-.github/workflows/java-ci.yml
-```
 ```yaml
 name: Java CI with Maven
 
@@ -406,8 +392,35 @@ jobs:
       - name: Run Tests
         run: mvn test
 ```
+
 ---
-🧱 Multi-Container CI/CD using Docker Compose
+
+## 🐳 GitHub Actions: Docker Build CI
+
+```yaml
+name: Docker Build CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t devops-app:latest .
+```
+
+---
+
+## 🧱 Docker Compose CI Workflow
+
 ```yaml
 name: Docker Compose CI
 
@@ -436,60 +449,125 @@ jobs:
       - name: Stop Services
         run: docker compose down
 ```
+
 ---
-📘 Key Concepts Learned
-Difference between Docker image and container
-Difference between `docker attach` and `docker exec`
-Container file copying using `docker cp`
-Docker volume persistence
-Docker bridge networking
-Multi-container application architecture
-Docker Compose service management
-Writing Dockerfiles
-Building custom Docker images
-Running database containers
-Maven build lifecycle
-Maven Wrapper usage
-Dockerizing Java applications
-CI/CD workflow using GitHub Actions
+
+## 🧪 Jenkins CI/CD Pipeline Concept
+
+Jenkins pipeline flow:
+
+```text
+Developer
+   ↓
+GitHub Repository
+   ↓
+Jenkins
+   ↓
+Maven Build
+   ↓
+Test
+   ↓
+Package JAR/WAR
+   ↓
+Deploy
+```
+
+### Basic Jenkins Pipeline
+
+```groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/username/repository-name.git'
+            }
+        }
+
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+    }
+}
+```
+
 ---
-🧠 Common Viva Questions
-What is Docker?
-Docker is a containerization platform used to package and run applications with all required dependencies.
-What is a Docker image?
-A Docker image is a read-only template used to create containers.
-What is a Docker container?
-A container is a running instance of a Docker image.
-What is Docker Compose?
-Docker Compose is a tool used to define and manage multi-container applications using a YAML file.
-What is Docker volume?
-A Docker volume is used to store persistent data outside the container lifecycle.
-What is Maven?
-Maven is a build automation and dependency management tool mainly used for Java projects.
-What is CI/CD?
-CI/CD means Continuous Integration and Continuous Delivery or Continuous Deployment.
-What is GitHub Actions?
-GitHub Actions is a CI/CD platform provided by GitHub to automate build, test, and deployment workflows.
+
+## 📌 Important Interview / Viva Points
+
+- Docker image is a template; container is a running instance of an image.
+- Docker volumes keep data safe even if the container is deleted.
+- Docker networks allow containers to communicate with each other.
+- Docker Compose manages multiple containers using a YAML file.
+- Maven automates Java build, test, and packaging.
+- `pom.xml` is the main Maven configuration file.
+- Jenkins automates CI/CD pipelines.
+- GitHub Actions can automatically run workflows on push or pull request.
+- CI means Continuous Integration.
+- CD means Continuous Delivery or Continuous Deployment.
+
 ---
-🚀 How to Use This Repository
-Clone the repository:
+
+## 🚀 How to Use This Repository
+
+1. Clone the repository:
+
 ```bash
 git clone https://github.com/<your-username>/<your-repo-name>.git
 ```
-Go inside the repository:
+
+2. Go inside the repository:
+
 ```bash
 cd <your-repo-name>
 ```
-Open any day-wise folder.
-Follow the commands and README files.
-Run Docker or Maven commands as per the task.
+
+3. Open day-wise folders.
+
+4. Read commands and practice tasks.
+
+5. Run Docker, Maven, Jenkins, or GitHub Actions workflows as required.
+
 ---
-✅ Final Outcome
-After completing these 15 days of DevOps practice, I gained hands-on experience with Docker, Docker Compose, Maven, and GitHub Actions CI/CD pipelines.
+
+## ✅ Final Outcome
+
+After completing these practical tasks, I gained hands-on experience in:
+
+- Running and managing containers
+- Creating custom Docker images
+- Managing persistent data using volumes
+- Connecting containers using networks
+- Running multi-container apps with Docker Compose
+- Building Java projects with Maven
+- Creating CI/CD workflows using GitHub Actions
+- Understanding Jenkins CI/CD pipeline flow
+
 This repository represents my practical DevOps learning journey and can be used for revision, interviews, viva preparation, and project demonstration.
+
 ---
-🙋 Author
-Utkarsh
+
+## 👨‍💻 Author
+
+**Utkarsh**
+
 ---
-📌 Note
-This repository is created for DevOps learning and hands-on practice.
+
+## 📌 Note
+
+This repository is created for learning, revision, and hands-on DevOps practice.
